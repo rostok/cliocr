@@ -51,7 +51,7 @@ namespace cliocr {
                 extractedText = ocrResult.Text;
                 if (args.Contains("-c")) {
                     Thread thread = new Thread(() => {
-                        if (String.IsNullOrWhiteSpace(extractedText)) {
+                        if (!String.IsNullOrWhiteSpace(extractedText)) {
                         	var dp = new DataPackage();
                         	dp.SetText(extractedText);
                         	Clipboard.SetContent(dp);
