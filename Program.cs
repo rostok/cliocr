@@ -51,10 +51,12 @@ namespace cliocr {
                 extractedText = ocrResult.Text;
                 if (args.Contains("-c")) {
                     Thread thread = new Thread(() => {
-                        var dp = new DataPackage();
-                        dp.SetText(extractedText);
-                        Clipboard.SetContent(dp);
-                        Clipboard.Flush();
+                        if (String.IsNullOrWhiteSpace(extractedText)) {
+                        	var dp = new DataPackage();
+                        	dp.SetText(extractedText);
+                        	Clipboard.SetContent(dp);
+                        	Clipboard.Flush();
+						}
                     });
                     thread.SetApartmentState(ApartmentState.STA); 
                     thread.Start(); 
