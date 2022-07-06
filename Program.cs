@@ -49,6 +49,11 @@ namespace cliocr {
                 OcrResult ocrResult = await ocrEngine.RecognizeAsync(bmp);
                 string extractedText = "FAILURE";
                 extractedText = ocrResult.Text;
+                if (args.Contains("-v")) {
+                    Console.WriteLine("text:\t{0}", ocrResult.Text);
+                    Console.WriteLine("angle:\t{0}",ocrResult.TextAngle);
+                    Console.WriteLine("lines:\t{0}",ocrResult.Lines.Count);
+                }
                 if (args.Contains("-c")) {
                     Thread thread = new Thread(() => {
                         if (!String.IsNullOrWhiteSpace(extractedText)) {
@@ -81,6 +86,7 @@ namespace cliocr {
                 Console.WriteLine(" -c              copy recognized text to clipboard");
                 Console.WriteLine(" -s              show avaiable languages");
                 Console.WriteLine(" -i              read image from stdin (bmp, jpg, ...)");
+                Console.WriteLine(" -v              verbose OcrResult");
                 Console.WriteLine(" -l LANG         set lanugage");
                 Console.WriteLine(" -h --help /?    this help");
                 Environment.Exit(0);

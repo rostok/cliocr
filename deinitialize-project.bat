@@ -1,3 +1,2 @@
-rmdir /s /q bin
-rmdir /s /q obj
+rmdir /s /q bin out obj
 del cliocr.csproj 

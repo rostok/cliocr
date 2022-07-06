@@ -16,3 +16,8 @@ Next build it.
 dotnet build
 ```
 
+Single exe app cliocr.exe can be generated in out folder via
+
+```
+single-exe-build.bat 
+```
